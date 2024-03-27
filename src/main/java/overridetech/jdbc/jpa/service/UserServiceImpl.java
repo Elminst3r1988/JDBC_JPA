@@ -1,31 +1,50 @@
 package overridetech.jdbc.jpa.service;
 
+import overridetech.jdbc.jpa.dao.UserDaoJDBCImpl;
 import overridetech.jdbc.jpa.model.User;
+import overridetech.jdbc.jpa.util.Util;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
-    public void createUsersTable() {
+    private UserDaoJDBCImpl dao;
+    private Connection connection;
 
+    public UserServiceImpl() {
+        Util util = new Util();
+        try {
+            connection = util.connectToDB();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        dao = new UserDaoJDBCImpl(connection);
+    }
+
+    public void createUsersTable() {
+        dao.createUsersTable();
     }
 
     public void dropUsersTable() {
-
+        dao.dropUsersTable();
     }
 
     public void saveUser(String name, String lastName, byte age) {
-
+        dao.saveUser(name, lastName, age);
     }
 
     public void removeUserById(long id) {
-
+        dao.removeUserById(id);
     }
 
     public List<User> getAllUsers() {
-        return null;
+        return dao.getAllUsers();
     }
 
     public void cleanUsersTable() {
-
+        dao.cleanUsersTable();
     }
 }
