@@ -14,13 +14,7 @@ public class UserServiceImpl implements UserService {
 
     public UserServiceImpl() {
         Util util = new Util();
-        try {
-            connection = util.connectToDB();
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        connection = util.connectToDB();
         dao = new UserDaoJDBCImpl(connection);
     }
 

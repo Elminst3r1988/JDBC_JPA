@@ -1,6 +1,7 @@
 package overridetech.jdbc.jpa.dao;
 
 import overridetech.jdbc.jpa.model.User;
+import overridetech.jdbc.jpa.util.Util;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
     private Connection connection;
+    private Util util;
 
     public UserDaoJDBCImpl(Connection connection) {
         this.connection = connection;

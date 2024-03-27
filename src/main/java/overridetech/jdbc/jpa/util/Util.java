@@ -9,16 +9,17 @@ public class Util {
     private static final String USER = "postgres";
     private static final String PASS = "123456";
 
-    private Connection connection;
 
-    public Connection connectToDB() throws ClassNotFoundException, SQLException {
-        Class.forName("org.postgresql.Driver");
+    public Connection connectToDB() {
         try {
+            Class.forName("org.postgresql.Driver");
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
             return connection;
-        } catch (Exception e) {
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+         catch (Exception e) {
             System.out.println(e.getMessage());
-            ;
         }
         return null;
     }

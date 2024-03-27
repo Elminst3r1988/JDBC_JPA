@@ -6,6 +6,7 @@ import overridetech.jdbc.jpa.service.UserServiceImpl;
 import overridetech.jdbc.jpa.util.Util;
 
 import java.sql.SQLException;
+import java.util.function.DoubleUnaryOperator;
 
 public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
@@ -19,6 +20,8 @@ public class Main {
         userService.getAllUsers().forEach(System.out::println);
         userService.cleanUsersTable();
         userService.dropUsersTable();
+
+
 
 
     }
