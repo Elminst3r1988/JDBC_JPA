@@ -1,5 +1,6 @@
 package overridetech.jdbc.jpa.service;
 
+import overridetech.jdbc.jpa.dao.UserDaoHibernateImpl;
 import overridetech.jdbc.jpa.dao.UserDaoJDBCImpl;
 import overridetech.jdbc.jpa.model.User;
 import overridetech.jdbc.jpa.util.Util;
@@ -9,7 +10,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
-    private final UserDaoJDBCImpl dao = new UserDaoJDBCImpl();
+//    private final UserDaoJDBCImpl dao = new UserDaoJDBCImpl();
+    private final UserDaoHibernateImpl dao = new UserDaoHibernateImpl();
 
     public UserServiceImpl() {
 
