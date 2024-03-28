@@ -9,13 +9,10 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
-    private UserDaoJDBCImpl dao;
-    private Connection connection;
+    private final UserDaoJDBCImpl dao = new UserDaoJDBCImpl();
 
     public UserServiceImpl() {
-        Util util = new Util();
-        connection = util.connectToDB();
-        dao = new UserDaoJDBCImpl(connection);
+
     }
 
     public void createUsersTable() {
